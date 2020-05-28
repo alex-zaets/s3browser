@@ -63,6 +63,8 @@ def render_file(filename, parents):
         delimiter = "\t" if mimetype == "text/tab-separated-values" else ","
         table = csv_table(content, delimiter)
         return render_template("s3list.html", crumbs=parents, s3objects=table)
+    else:
+	    mimetype = "application/octet-stream"
     return send_file(io.BytesIO(content), mimetype=mimetype)
 
 
